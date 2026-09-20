@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import GigCard from "../components/GigCard.astro";
+import { getCollection } from "astro:content";
+
+const gigs = (await getCollection("gigs")).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+---
+
+<BaseLayout title="Gigs">
+  <Section>
+    <h1 class="text-3xl font-bold mb-6">Upcoming Gigs</h1>
+    {gigs.length > 0 ? (
+      <div class="flex flex-col gap-4">
+        {gigs.map((gig) => (
+          <GigCard date={gig.data.date} venue={gig.data.venue} location={gig.data.location} ticketUrl={gig.data.ticketUrl} />
+        ))}
+      </div>
+    ) : (
+      <p class="text-seagles-navy/70">No gigs announced yet — check back soon.</p>
+    )}
+  </Section>
+</BaseLayout>

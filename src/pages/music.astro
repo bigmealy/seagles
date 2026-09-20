@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+---
+
+<BaseLayout title="Music">
+  <Section>
+    <h1 class="text-3xl font-bold mb-6">Music</h1>
+    <p class="text-seagles-navy/80 mb-6">Hear Seagles before you book or buy a ticket.</p>
+
+    <!-- TODO: embed real Spotify/YouTube/SoundCloud players once links are available -->
+    <div class="grid gap-4 md:grid-cols-3">
+      <div class="border-2 border-dashed border-seagles-navy/30 rounded-lg p-6 bg-seagles-navy/5 text-center">
+        <p class="font-semibold">Spotify</p>
+        <p class="text-sm text-seagles-navy/60">Embed placeholder — TBD</p>
+      </div>
+      <div class="border-2 border-dashed border-seagles-navy/30 rounded-lg p-6 bg-seagles-navy/5 text-center">
+        <p class="font-semibold">YouTube</p>
+        <p class="text-sm text-seagles-navy/60">Embed placeholder — TBD</p>
+      </div>
+      <div class="border-2 border-dashed border-seagles-navy/30 rounded-lg p-6 bg-seagles-navy/5 text-center">
+        <p class="font-semibold">SoundCloud</p>
+        <p class="text-sm text-seagles-navy/60">Embed placeholder — TBD</p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

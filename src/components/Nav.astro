@@ -1,0 +1,57 @@
+---
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/gigs", label: "Gigs" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/music", label: "Music" },
+  { href: "/contact", label: "Booking" },
+];
+---
+
+<nav class="relative">
+  <ul class="hidden md:flex gap-6 font-medium">
+    {links.map((link) => (
+      <li><a href={link.href} class="hover:text-seagles-orange transition-colors">{link.label}</a></li>
+    ))}
+  </ul>
+
+  <button
+    id="nav-toggle"
+    type="button"
+    class="md:hidden p-2 -mr-2"
+    aria-expanded="false"
+    aria-controls="nav-mobile-menu"
+    aria-label="Toggle navigation menu"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <ul
+    id="nav-mobile-menu"
+    hidden
+    class="md:hidden absolute right-0 top-full mt-2 w-48 bg-seagles-navy text-seagles-cream rounded shadow-lg flex flex-col p-2 z-10"
+  >
+    {links.map((link) => (
+      <li><a href={link.href} class="block px-3 py-2 rounded hover:bg-seagles-teal transition-colors">{link.label}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("nav-mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    const isHidden = menu?.hasAttribute("hidden");
+    if (isHidden) {
+      menu?.removeAttribute("hidden");
+      toggle.setAttribute("aria-expanded", "true");
+    } else {
+      menu?.setAttribute("hidden", "");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>

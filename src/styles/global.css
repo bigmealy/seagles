@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/*
+  Placeholder theme derived from the band logo's colors, not a finalized
+  brand pass — color scheme is still TBD per docs/product-spec.md.
+*/
+@theme {
+  --color-seagles-navy: #1c2c40;
+  --color-seagles-orange: #d9772e;
+  --color-seagles-cream: #f4ecd8;
+  --color-seagles-teal: #1f4d5c;
+}

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import GalleryItem from "../components/GalleryItem.astro";
+
+// TODO: replace placeholder tiles with real photos in public/images/gallery/
+const placeholderCount = 6;
+---
+
+<BaseLayout title="Gallery">
+  <Section>
+    <h1 class="text-3xl font-bold mb-6">Gallery</h1>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {Array.from({ length: placeholderCount }).map(() => (
+        <GalleryItem />
+      ))}
+    </div>
+  </Section>
+</BaseLayout>

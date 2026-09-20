@@ -1,0 +1,35 @@
+---
+interface Props {
+  date: Date;
+  venue: string;
+  location: string;
+  ticketUrl?: string;
+}
+
+const { date, venue, location, ticketUrl } = Astro.props;
+
+const formattedDate = date.toLocaleDateString("en-GB", {
+  weekday: "short",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 p-5 bg-white rounded-lg shadow-sm border border-seagles-navy/10">
+  <div>
+    <p class="font-semibold text-seagles-navy">{formattedDate}</p>
+    <p class="text-lg font-bold">{venue}</p>
+    <p class="text-sm text-seagles-navy/70">{location}</p>
+  </div>
+  {ticketUrl && (
+    <a
+      href={ticketUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="shrink-0 inline-block text-center bg-seagles-orange text-white font-semibold px-4 py-2 rounded hover:opacity-90 transition-opacity"
+    >
+      Tickets
+    </a>
+  )}
+</div>
