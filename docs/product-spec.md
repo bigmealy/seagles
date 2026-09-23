@@ -37,6 +37,7 @@ A form or clear contact method (email/phone) aimed primarily at venues and promo
 - **Fast**: quick load times, especially on mobile networks
 - **Accessible**: basic accessibility (readable contrast, alt text on images, keyboard-navigable nav)
 - **Professional visual polish**: consistent branding, no default/unstyled-looking elements
+- **Legal**: the site must carry a persistent, clearly visible statement that Seagles is an independent tribute act and is not affiliated with, endorsed by, or connected to the Eagles, their members, or their estate (footer, site-wide). When the About/Bio copy below is written, it should also include an explicit non-affiliation sentence near the top, not rely on the footer alone.
 
 ## Content Readiness
 
@@ -44,7 +45,7 @@ A form or clear contact method (email/phone) aimed primarily at venues and promo
 |---|---|
 | Logo | Ready |
 | Band photos | TBD — need to be supplied |
-| Bio copy | TBD — needs to be written |
+| Bio copy | TBD — needs to be written; must include an explicit non-affiliation sentence near the top (see Non-Functional Requirements → Legal) |
 | Color scheme / visual branding | TBD — not yet decided |
 | Gig date data | TBD — ongoing, updated as shows are booked |
 
