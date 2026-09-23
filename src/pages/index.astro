@@ -12,26 +12,26 @@ const nextGig = gigs[0];
   <Section class="text-center">
     <img src="/images/logo.png" alt="Seagles — An Eagles Tribute" class="w-40 h-40 mx-auto rounded-full mb-6" />
     <h1 class="text-4xl md:text-5xl font-bold mb-3">SEAGLES</h1>
-    <p class="text-lg text-seagles-navy/80 mb-8">An Eagles Tribute — north-east Scotland</p>
+    <p class="text-lg text-seagles-cream/80 mb-8">An Eagles Tribute — north-east Scotland</p>
     <div class="flex flex-wrap gap-4 justify-center">
       <a href="/gigs" class="bg-seagles-orange text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">See Gigs</a>
-      <a href="/contact" class="border-2 border-seagles-navy font-semibold px-6 py-3 rounded hover:bg-seagles-navy hover:text-white transition-colors">Book the Band</a>
+      <a href="/contact" class="border-2 border-seagles-cream font-semibold px-6 py-3 rounded hover:bg-seagles-navy hover:text-seagles-cream transition-colors">Book the Band</a>
     </div>
   </Section>
 
-  <Section class="bg-white rounded-lg">
-    <h2 class="text-2xl font-bold mb-4">Next up</h2>
+  <Section class="bg-seagles-cream rounded-lg">
+    <h2 class="text-2xl font-bold mb-4 text-seagles-navy">Next up</h2>
     {nextGig ? (
       <GigCard date={nextGig.data.date} venue={nextGig.data.venue} location={nextGig.data.location} ticketUrl={nextGig.data.ticketUrl} />
     ) : (
       <p class="text-seagles-navy/70">No gigs announced yet — check back soon.</p>
     )}
-    <a href="/gigs" class="inline-block mt-4 font-semibold hover:text-seagles-orange transition-colors">See all gigs &rarr;</a>
+    <a href="/gigs" class="inline-block mt-4 font-semibold text-seagles-navy hover:text-seagles-orange transition-colors">See all gigs &rarr;</a>
   </Section>
 
   <Section>
     <h2 class="text-2xl font-bold mb-4">Hear us / See us</h2>
-    <p class="text-seagles-navy/80 mb-4">Get a feel for the live show before you book or buy a ticket.</p>
+    <p class="text-seagles-cream/80 mb-4">Get a feel for the live show before you book or buy a ticket.</p>
     <div class="flex flex-wrap gap-4">
       <a href="/gallery" class="font-semibold hover:text-seagles-orange transition-colors">Gallery &rarr;</a>
       <a href="/music" class="font-semibold hover:text-seagles-orange transition-colors">Music &rarr;</a>

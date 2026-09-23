@@ -8,7 +8,7 @@ Initial Astro + Tailwind scaffold is in place: shared layout/nav/footer, all six
 
 - Dev: `npm run dev` (http://localhost:4321) · Build: `npm run build` · Preview: `npm run preview`
 - Stack: Astro 7, Tailwind CSS v4 added via `npx astro add tailwind` (wires up `@tailwindcss/vite` in `astro.config.mjs` — this is the current prescribed method; the older `@astrojs/tailwind` integration is v3-only and deprecated, don't use it)
-- Theme tokens (`--color-seagles-*`) live in `src/styles/global.css`, derived from the real logo's colors — provisional until a proper branding pass, not final
+- Theme tokens (`--color-seagles-*`) live in `src/styles/global.css`, derived from the real logo's colors — provisional until a proper branding pass, not final. Site-wide background is a navy → `seagles-black` gradient (with a subtle warm radial glow) applied on `<body>` in `BaseLayout.astro`, going for a 70s "desert dusk" feel rather than the earlier flat cream background — base text is `seagles-cream`; light surfaces (cards, placeholder boxes) use `seagles-cream` instead of white/navy-tint so they still read against the dark gradient
 - Gigs: add a show by creating a new markdown file in `src/content/gigs/` with frontmatter `date`, `venue`, `location`, `ticketUrl` (optional) — schema is in `src/content.config.ts`
 
 ### Known placeholders to replace (see docs/product-spec.md Content Readiness table)
