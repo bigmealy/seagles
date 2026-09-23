@@ -2,7 +2,7 @@
 
 ## Overview
 
-Seagles is an Eagles tribute band based in north-east Scotland. The website is a public-facing site for two audiences: fans who want to find out about the band and see upcoming shows, and venues/promoters who want to book the band. It should present the band professionally and make it easy to find gigs, hear/see the band, and get in touch.
+Seagles is an Eagles tribute band based in North-East Scotland. The website is a public-facing site for two audiences: fans who want to find out about the band and see upcoming shows, and venues/promoters who want to book the band. It should present the band professionally and make it easy to find gigs, hear/see the band, and get in touch.
 
 ## Goals
 

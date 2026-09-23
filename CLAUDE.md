@@ -1,6 +1,6 @@
 # Seagles Website
 
-Public-facing website for Seagles, an Eagles tribute band based in north-east Scotland. Full requirements live in `docs/product-spec.md` (features/content) and `docs/technical-spec.md` (stack/architecture) — read those before making product or technical decisions here.
+Public-facing website for Seagles, an Eagles tribute band based in North-East Scotland. Full requirements live in `docs/product-spec.md` (features/content) and `docs/technical-spec.md` (stack/architecture) — read those before making product or technical decisions here.
 
 ## Status
 
