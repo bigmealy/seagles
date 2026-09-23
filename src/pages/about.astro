@@ -1,20 +1,62 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
+
+// TODO: replace each placeholder below with real copy once band member
+// questionnaire responses come back — see docs/product-spec.md Content
+// Readiness table. Structure follows researched best practice for About/bio
+// pages: elevator pitch, origin story, sound, credibility, photo.
+interface PlaceholderSection {
+  heading: string;
+  note: string;
+}
+
+const sections: PlaceholderSection[] = [
+  {
+    heading: "The sound",
+    note: "What Seagles plays — deep cuts vs. the hits, harmonies focus, era covered — and what makes this tribute distinct.",
+  },
+  {
+    heading: "The story",
+    note: "How and when the band formed, whose idea it was, and the people behind the music.",
+  },
+  {
+    heading: "On the road",
+    note: "Notable gigs and venues played so far, plus any press mentions or audience/venue feedback worth quoting.",
+  },
+];
 ---
 
 <BaseLayout title="About">
   <Section>
-    <h1 class="text-3xl font-bold mb-6">About Seagles</h1>
+    <h1 class="text-3xl font-bold mb-3">About Seagles</h1>
+    <p class="text-sm text-seagles-cream/60 mb-8">
+      Seagles is an independent tribute act and is not affiliated with, endorsed by, or connected to the Eagles, their members, or their estate.
+    </p>
 
-    <!-- TODO: replace with real bio copy, see docs/product-spec.md Content Readiness table -->
-    <div class="border-2 border-dashed border-seagles-cream/30 rounded-lg p-6 bg-seagles-cream/10">
-      <p class="font-semibold mb-2">Bio copy placeholder — TBD</p>
+    <!-- TODO: elevator pitch placeholder — one or two sentences, the part a skimming visitor actually reads -->
+    <div class="border-2 border-dashed border-seagles-cream/30 rounded-lg p-6 bg-seagles-cream/10 mb-8">
+      <p class="font-semibold mb-2">Elevator pitch — TBD</p>
       <p class="text-seagles-cream/70">
-        This section will tell Seagles' story: how the band formed, what they play,
-        and the people behind the music. Real copy has not been written yet — see
-        <code class="text-sm bg-seagles-cream text-seagles-navy px-1 py-0.5 rounded">docs/product-spec.md</code>.
+        A one- or two-sentence introduction: who Seagles are, what they play, and where they're based (North-East Scotland).
       </p>
+    </div>
+
+    {sections.map((section) => (
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-3">{section.heading}</h2>
+        <div class="border-2 border-dashed border-seagles-cream/30 rounded-lg p-6 bg-seagles-cream/10">
+          <p class="font-semibold mb-2">Placeholder — TBD</p>
+          <p class="text-seagles-cream/70">{section.note}</p>
+        </div>
+      </div>
+    ))}
+
+    <div>
+      <h2 class="text-2xl font-bold mb-3">The band</h2>
+      <div class="border-2 border-dashed border-seagles-cream/30 rounded-lg p-6 bg-seagles-cream/10 flex items-center justify-center text-center aspect-video">
+        <span class="text-sm text-seagles-cream/60">Band photo placeholder — awaiting real photos, see public/images/gallery/</span>
+      </div>
     </div>
   </Section>
 </BaseLayout>
