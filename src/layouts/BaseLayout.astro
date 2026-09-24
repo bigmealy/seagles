@@ -20,7 +20,16 @@ const { title, description = "Seagles — an independent Eagles tribute band bas
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Seagles</title>
   </head>
-  <body class="bg-[radial-gradient(ellipse_at_50%_10%,color-mix(in_oklab,var(--color-seagles-orange)_18%,transparent),transparent_60%),linear-gradient(to_bottom,var(--color-seagles-navy),var(--color-seagles-black))] text-seagles-cream">
+  <body class="bg-seagles-black text-seagles-cream">
+    <video
+      class="fixed inset-0 -z-20 h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      src="/videos/ocean-loop.mp4"
+    />
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_10%,color-mix(in_oklab,var(--color-seagles-orange)_14%,transparent),transparent_60%),linear-gradient(to_bottom,color-mix(in_oklab,#0d2539_85%,transparent),color-mix(in_oklab,var(--color-seagles-black)_90%,transparent))]"></div>
     <Header />
     <main>
       <slot />
