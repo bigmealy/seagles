@@ -17,7 +17,6 @@ Initial Astro + Tailwind scaffold is in place: shared layout/nav/footer, all six
 - `public/images/gallery/` — empty; `src/pages/gallery.astro` renders placeholder tiles until real photos are added
 - `src/content/gigs/*.md` — the two existing entries are fake example data, replace/remove once real gig dates exist
 - `src/pages/contact.astro` — booking email is a placeholder address; also has an open TODO on whether this stays a `mailto:` link or becomes a real form (needs a backend) — see `docs/technical-spec.md` Open Questions
-- `public/images/logo.png` is 2.1MB, heavy for how small it's displayed — worth compressing or moving into `src/assets/` so Astro's `<Image>` component can optimize it at build time
 - `public/videos/ocean-loop.mp4` (compressed to ~2.2MB, 1280x720, H.264, no audio) is an experimental site-wide background video, not final content — still needs a `prefers-reduced-motion` fallback (currently always autoplays) and a decision on whether a video background is kept at all
 
 ## Git / GitHub

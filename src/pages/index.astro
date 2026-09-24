@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import GigCard from "../components/GigCard.astro";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
 
 const gigs = (await getCollection("gigs")).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 const nextGig = gigs[0];
@@ -10,9 +12,9 @@ const nextGig = gigs[0];
 
 <BaseLayout title="Home">
   <Section class="text-center">
-    <img src="/images/logo.png" alt="Seagles — An Eagles Tribute" class="w-40 h-40 mx-auto rounded-full mb-6" />
-    <h1 class="text-4xl md:text-5xl font-bold mb-3">SEAGLES</h1>
-    <p class="text-lg text-seagles-cream/80 mb-8">An Eagles Tribute — North-East Scotland</p>
+    <h1 class="sr-only">Seagles — An Eagles Tribute</h1>
+    <Image src={logo} alt="Seagles — An Eagles Tribute" width={256} height={256} class="w-56 h-56 md:w-64 md:h-64 mx-auto rounded-full mb-6" />
+    <p class="text-lg text-seagles-cream/80 mb-8">from North-East Scotland</p>
     <div class="flex flex-wrap gap-4 justify-center">
       <a href="/gigs" class="bg-seagles-orange text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">See Gigs</a>
       <a href="/contact" class="border-2 border-seagles-cream font-semibold px-6 py-3 rounded hover:bg-seagles-navy hover:text-seagles-cream transition-colors">Book the Band</a>
