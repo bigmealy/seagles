@@ -38,6 +38,8 @@ No CMS or backend database. Content lives in the repo as structured data:
 
 This keeps updates to a `git commit` + redeploy, matching the "developer edits directly, no CMS" decision in the product spec.
 
+- **Booking/contact form**: decided — uses [Formspree](https://formspree.io) (free tier) rather than a custom backend or a plain `mailto:` link, so no real email address is ever exposed in the site's static HTML. No Azure Functions/API route needed; the form POSTs directly from the browser to Formspree. See `src/pages/contact.astro`.
+
 ## Deployment
 
 - **Target**: Azure Static Web Apps (existing account)
@@ -53,6 +55,5 @@ This keeps updates to a `git commit` + redeploy, matching the "developer edits d
 ## Open Questions / Deferred Decisions
 
 - Exact color scheme / visual identity beyond the existing logo — TBD before final styling pass
-- Whether the booking/contact form needs a backend to send email (e.g. Azure Functions, or a third-party form service like Formspree) or whether a `mailto:` link is sufficient for launch
 - Custom domain name and DNS setup
 - Whether past gigs should be shown, and for how long

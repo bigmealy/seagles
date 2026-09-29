@@ -19,7 +19,6 @@ Soft launch: only Home and Contact are live. About, Gigs, Gallery, and Music are
 - `public/images/gallery/` — empty; `src/pages/_gallery.astro` renders placeholder tiles until real photos are added (also currently excluded from the build, see Status above)
 - `src/content/gigs/*.md` — the two existing entries are fake example data, replace/remove once real gig dates exist (`src/pages/_gigs.astro` is currently excluded from the build, see Status above)
 - `src/pages/_music.astro` — static placeholder embed boxes, not real content (also currently excluded from the build, see Status above)
-- `src/pages/contact.astro` — booking email is a placeholder address; also has an open TODO on whether this stays a `mailto:` link or becomes a real form (needs a backend) — see `docs/technical-spec.md` Open Questions
 - `public/videos/ocean-loop.mp4` (compressed to ~2.2MB, 1280x720, H.264, no audio) is an experimental site-wide background video, not final content — still needs a `prefers-reduced-motion` fallback (currently always autoplays) and a decision on whether a video background is kept at all
 
 ## Git / GitHub

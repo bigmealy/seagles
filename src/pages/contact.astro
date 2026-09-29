@@ -2,8 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 
-// TODO: replace with real booking email address
-const bookingEmail = "booking@seagles-placeholder.example";
+const formspreeFormId = "xvkgdevv";
 ---
 
 <BaseLayout title="Booking & Contact">
@@ -14,24 +13,68 @@ const bookingEmail = "booking@seagles-placeholder.example";
     <p class="text-seagles-cream/80 mb-6">
       Get in touch to check availability and book Seagles for your venue or event.
     </p>
-    <a
-      href={`mailto:${bookingEmail}`}
-      class="inline-block bg-seagles-orange text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity mb-10"
-    >
-      Email to book: {bookingEmail}
-    </a>
 
-    <p class="text-seagles-cream/80 mb-10">
-      Fans with questions are welcome to reach out at the same address.
+    <form method="POST" action={`https://formspree.io/f/${formspreeFormId}`} class="max-w-xl">
+      <div class="mb-4">
+        <label for="name" class="block mb-1 font-medium text-seagles-cream">Name <span class="text-seagles-orange">*</span></label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          autocomplete="name"
+          class="w-full rounded border border-seagles-navy/20 bg-seagles-cream text-seagles-navy px-3 py-2 placeholder:text-seagles-navy/50 focus:outline-none focus:ring-2 focus:ring-seagles-orange"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block mb-1 font-medium text-seagles-cream">Email <span class="text-seagles-orange">*</span></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="email"
+          class="w-full rounded border border-seagles-navy/20 bg-seagles-cream text-seagles-navy px-3 py-2 placeholder:text-seagles-navy/50 focus:outline-none focus:ring-2 focus:ring-seagles-orange"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="organisation" class="block mb-1 font-medium text-seagles-cream">Venue / organisation</label>
+        <input
+          type="text"
+          id="organisation"
+          name="organisation"
+          autocomplete="organization"
+          class="w-full rounded border border-seagles-navy/20 bg-seagles-cream text-seagles-navy px-3 py-2 placeholder:text-seagles-navy/50 focus:outline-none focus:ring-2 focus:ring-seagles-orange"
+        />
+      </div>
+
+      <div class="mb-6">
+        <label for="message" class="block mb-1 font-medium text-seagles-cream">Message <span class="text-seagles-orange">*</span></label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          required
+          placeholder="Tell us about your event — date, venue, and any other details."
+          class="w-full rounded border border-seagles-navy/20 bg-seagles-cream text-seagles-navy px-3 py-2 placeholder:text-seagles-navy/50 focus:outline-none focus:ring-2 focus:ring-seagles-orange"
+        ></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="New enquiry from Seagles website" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <button
+        type="submit"
+        class="inline-block bg-seagles-orange text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity"
+      >
+        Send message
+      </button>
+    </form>
+
+    <p class="text-seagles-cream/80 mt-10">
+      Fans with questions are welcome to use the form above too.
     </p>
-
-    <!-- TODO: decide whether this becomes a real form (needs a backend — Azure
-         Functions or a service like Formspree) or stays a mailto: link.
-         See docs/technical-spec.md Open Questions. -->
-    <div class="border-2 border-dashed border-seagles-cream/30 rounded-lg p-4 bg-seagles-cream/10 text-sm text-seagles-cream/70">
-      Note: this page currently uses a plain mailto: link. Whether a proper
-      contact form (with a backend to send email) is needed is still an open
-      decision — see the technical spec.
-    </div>
   </Section>
 </BaseLayout>
