@@ -6,6 +6,8 @@ Public-facing website for Seagles, an Eagles tribute band based in North-East Sc
 
 Initial Astro + Tailwind scaffold is in place: shared layout/nav/footer, all six pages from the product spec, and a `gigs` content collection. Not production-ready — several known placeholders still need real content (see below).
 
+Soft launch: only Home and Contact are live. About, Gigs, Gallery, and Music are temporarily taken out of the site pending real content — their page files are renamed with a leading underscore (e.g. `src/pages/_about.astro`), which is Astro's convention for excluding a file from routing, so those URLs 404 rather than serve placeholder content. Their nav entries in `src/components/Nav.astro` and the homepage's gig-teaser and "Hear us / See us" sections in `src/pages/index.astro` are commented out rather than deleted. To bring a page back: remove its leading underscore, uncomment its `Nav.astro` entry, and uncomment/restore the relevant homepage links.
+
 - Dev: `npm run dev` (http://localhost:4321) · Build: `npm run build` · Preview: `npm run preview`
 - Stack: Astro 7, Tailwind CSS v4 added via `npx astro add tailwind` (wires up `@tailwindcss/vite` in `astro.config.mjs` — this is the current prescribed method; the older `@astrojs/tailwind` integration is v3-only and deprecated, don't use it)
 - Theme tokens (`--color-seagles-*`) live in `src/styles/global.css`, derived from the real logo's colors — provisional until a proper branding pass, not final. Site-wide background in `BaseLayout.astro` is a looping video (`public/videos/ocean-loop.mp4`, an experimental placeholder, not final content) behind a dark navy/black gradient overlay (tinted close to the logo's navy, with a subtle warm radial glow) — base text is `seagles-cream`; light surfaces (cards, placeholder boxes) use `seagles-cream` instead of white/navy-tint so they still read against the dark background
@@ -13,9 +15,10 @@ Initial Astro + Tailwind scaffold is in place: shared layout/nav/footer, all six
 - `Footer.astro` carries a legal non-affiliation disclaimer (Seagles is an independent tribute act, not affiliated with/endorsed by the Eagles) — keep this if the footer is ever redesigned; see `docs/product-spec.md` Non-Functional Requirements → Legal
 
 ### Known placeholders to replace (see docs/product-spec.md Content Readiness table)
-- `src/pages/about.astro` — bio copy is a placeholder callout, not real text
-- `public/images/gallery/` — empty; `src/pages/gallery.astro` renders placeholder tiles until real photos are added
-- `src/content/gigs/*.md` — the two existing entries are fake example data, replace/remove once real gig dates exist
+- `src/pages/_about.astro` — bio copy is a placeholder callout, not real text (also currently excluded from the build, see Status above)
+- `public/images/gallery/` — empty; `src/pages/_gallery.astro` renders placeholder tiles until real photos are added (also currently excluded from the build, see Status above)
+- `src/content/gigs/*.md` — the two existing entries are fake example data, replace/remove once real gig dates exist (`src/pages/_gigs.astro` is currently excluded from the build, see Status above)
+- `src/pages/_music.astro` — static placeholder embed boxes, not real content (also currently excluded from the build, see Status above)
 - `src/pages/contact.astro` — booking email is a placeholder address; also has an open TODO on whether this stays a `mailto:` link or becomes a real form (needs a backend) — see `docs/technical-spec.md` Open Questions
 - `public/videos/ocean-loop.mp4` (compressed to ~2.2MB, 1280x720, H.264, no audio) is an experimental site-wide background video, not final content — still needs a `prefers-reduced-motion` fallback (currently always autoplays) and a decision on whether a video background is kept at all
 
