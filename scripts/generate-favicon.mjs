@@ -1,43 +1,11 @@
 // Generates favicon assets (public/favicon.ico, favicon-16.png,
-// favicon-32.png, apple-touch-icon.png) as a miniature circular crop of the
-// real band logo (src/assets/logo.png). Run with: node scripts/generate-favicon.mjs
+// favicon-32.png, favicon.svg, apple-touch-icon.png) as a miniature circular
+// crop of the real band logo (src/assets/logo.png). Run with:
+// node scripts/generate-favicon.mjs
 import sharp from "sharp";
 import { writeFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import path from "node:path";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, "..");
-
-const SOURCE = path.join(root, "src/assets/logo.png");
-const SIZE = 1024; // working resolution before downscaling
-
-// The full circular badge (sunset + seagull + "SEAGLES" text + guitar body +
-// waves) has too much fine detail to read at real favicon sizes (16-32px) —
-// it turns into an indistinct blob. Instead, crop tight on just the seagull
-// over the guitar headstock/sunset — the most recognisable part of the mark
-// — from the source artwork (1254x1254), which reads as a mark at small
-// sizes while still visibly coming from the real logo.
-const CROP = { left: 390, top: 150, width: 474, height: 400 };
-
-const CIRCLE_MASK = `
-<svg width="${SIZE}" height="${SIZE}">
-  <circle cx="${SIZE / 2}" cy="${SIZE / 2}" r="${SIZE / 2}" fill="#fff" />
-</svg>
-`;
-
-async function buildMaster() {
-  const resized = await sharp(SOURCE)
-    .extract(CROP)
-    .resize(SIZE, SIZE)
-    .ensureAlpha()
-    .toBuffer();
-
-  return sharp(resized)
-    .composite([{ input: Buffer.from(CIRCLE_MASK), blend: "dest-in" }])
-    .png()
-    .toBuffer();
-}
+import { buildLogoMark, root } from "./lib/logo-mark.mjs";
 
 async function writePng(masterBuffer, size, outPath) {
   await sharp(masterBuffer)
@@ -81,7 +49,7 @@ function buildIco(entries) {
   return Buffer.concat([header, ...dirEntries, ...imageBuffers]);
 }
 
-const master = await buildMaster();
+const master = await buildLogoMark(1024);
 
 const icoSizes = [16, 32, 48];
 const icoEntries = [];
@@ -98,4 +66,17 @@ await writePng(master, 32, path.join(root, "public/favicon-32.png"));
 await writePng(master, 16, path.join(root, "public/favicon-16.png"));
 await writePng(master, 180, path.join(root, "public/apple-touch-icon.png"));
 
-console.log("Wrote public/favicon.ico, favicon-32.png, favicon-16.png, apple-touch-icon.png");
+// favicon.svg: not a true vector (the source logo is raster artwork), but an
+// SVG wrapper embedding the same masked crop as a data URI, so it stays in
+// sync with the other favicon assets and works anywhere an SVG icon URL is
+// expected (e.g. the JSON-LD `logo` field in BaseLayout.astro).
+const svgEmbed = await sharp(master).resize(256, 256, { kernel: sharp.kernel.lanczos3 }).png().toBuffer();
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <image href="data:image/png;base64,${svgEmbed.toString("base64")}" width="256" height="256" />
+</svg>
+`;
+writeFileSync(path.join(root, "public/favicon.svg"), svg);
+
+console.log(
+  "Wrote public/favicon.ico, favicon-32.png, favicon-16.png, favicon.svg, apple-touch-icon.png",
+);

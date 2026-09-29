@@ -3,19 +3,14 @@
 // src/styles/global.css. Not final branding/photography — see CLAUDE.md
 // "Known placeholders to replace".
 import sharp from "sharp";
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import path from "node:path";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, "..");
+import { buildLogoMark, root } from "./lib/logo-mark.mjs";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
-
-const eagleMarkSvg = readFileSync(path.join(root, "public/favicon.svg"), "utf-8");
-const eaglePathMatch = eagleMarkSvg.match(/<path d="([^"]+)"/);
-const eaglePath = eaglePathMatch[1];
+const MARK_SIZE = 220;
+const MARK_TOP = 50;
+const MARK_LEFT = Math.round(WIDTH / 2 - MARK_SIZE / 2);
 
 const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
@@ -31,9 +26,6 @@ const svg = `
   </defs>
   <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#bg)" />
   <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#glow)" />
-  <g transform="translate(${WIDTH / 2 - 90}, 70) scale(1.4)">
-    <path d="${eaglePath}" fill="#f4ecd8" />
-  </g>
   <text
     x="${WIDTH / 2}"
     y="440"
@@ -65,7 +57,10 @@ const svg = `
 </svg>
 `;
 
+const logoMark = await buildLogoMark(MARK_SIZE);
+
 await sharp(Buffer.from(svg))
+  .composite([{ input: logoMark, top: MARK_TOP, left: MARK_LEFT }])
   .png()
   .toFile(path.join(root, "public/images/og-default.png"));
 
