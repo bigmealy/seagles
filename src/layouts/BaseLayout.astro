@@ -5,10 +5,32 @@ import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
-  description?: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
 }
 
-const { title, description = "Seagles — an independent Eagles tribute band based in North-East Scotland, not affiliated with or endorsed by the Eagles." } = Astro.props;
+const { title, description, image = "/images/og-default.png", type = "website" } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(image, Astro.site);
+
+const musicGroupSchema = {
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  name: "Seagles",
+  alternateName: "Seagles Tribute",
+  genre: "Classic rock / Eagles tribute",
+  description:
+    "Seagles is an independent Eagles tribute band based in North-East Scotland, performing live shows for venues and events. Not affiliated with, endorsed by, or connected to the Eagles.",
+  url: "https://www.seaglestribute.co.uk",
+  logo: "https://www.seaglestribute.co.uk/favicon.svg",
+  sameAs: ["https://facebook.com/seaglestribute"],
+  foundingLocation: {
+    "@type": "Place",
+    name: "North-East Scotland, United Kingdom",
+  },
+};
 ---
 
 <!doctype html>
@@ -17,8 +39,28 @@ const { title, description = "Seagles — an independent Eagles tribute band bas
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+    <meta name="theme-color" content="#1c2c40" />
     <title>{title} | Seagles</title>
+
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Seagles" />
+    <meta property="og:title" content={`${title} | Seagles`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Seagles`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(musicGroupSchema)} />
   </head>
   <body class="bg-seagles-black text-seagles-cream">
     <video
