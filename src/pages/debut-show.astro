@@ -1,0 +1,144 @@
+---
+// Unlisted invite-only page — not linked anywhere, noindex, excluded from sitemap. See CLAUDE.md.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+
+const event = {
+  date: "Friday 6 November 2026",
+  doors: "7pm",
+  showStart: "8pm",
+  showTime: "8pm – 11pm",
+  venue: "Drouthy Laird",
+  room: "Parker Suite function room",
+  entranceStreet: "Victoria Street",
+  location: "Inverurie",
+};
+
+// Street View looking at the side entrance (from https://maps.app.goo.gl/KRk4Trbschifgo69A)
+const sideEntrance = {
+  panoId: "7veZqB6XpRmgnWPZdbBeww",
+  lat: 57.2845621,
+  lng: -2.3799555,
+  heading: 295.33,
+  pitch: 2.6,
+};
+
+const { panoId, lat, lng, heading, pitch } = sideEntrance;
+const mapUrl = `https://www.google.com/maps/@?api=1&map_action=pano&pano=${panoId}&viewpoint=${lat},${lng}&heading=${heading}&pitch=${pitch}`;
+const mapEmbedUrl = `https://www.google.com/maps/embed?pb=!6m8!1m7!1s${panoId}!2m2!1d${lat}!2d${lng}!3f${heading}!4f${pitch}!5f1`;
+
+const venueMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${event.venue}, ${event.location}`)}`;
+const facebookUrl = "https://facebook.com/seaglestribute";
+const youtubeSubscribeUrl = "https://www.youtube.com/@seaglestribute?sub_confirmation=1";
+const overflowParkingUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Inverurie Academy Community Campus")}`;
+---
+
+<BaseLayout
+  title="Debut Show"
+  description="Details for invited guests at the Seagles debut show — Friday 6 November, Drouthy Laird, Inverurie."
+  noindex
+>
+  <Section>
+    <h1 class="text-3xl md:text-4xl font-bold mb-6">The Seagles – Debut Show</h1>
+    <div class="max-w-xl space-y-3 text-lg text-seagles-cream/80 mb-8">
+      <p>We're so excited to finally be bringing our Eagles tribute show to you all.</p>
+      <p>Thank you for being there to help us through our very first one!</p>
+    </div>
+
+    <div class="p-5 bg-seagles-cream rounded-lg shadow-sm border border-seagles-navy/10 max-w-xl">
+      <p class="font-semibold text-seagles-navy">{event.date}</p>
+      <p class="text-lg font-bold text-seagles-navy">
+        <a href={venueMapUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-seagles-orange transition-colors">{event.venue}</a>
+      </p>
+      <p class="text-seagles-navy">{event.room}</p>
+      <p class="text-sm text-seagles-navy/70 mb-4">{event.location}</p>
+      <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 text-seagles-navy">
+        <dt class="font-semibold">Doors</dt>
+        <dd>{event.doors}</dd>
+        <dt class="font-semibold">Show</dt>
+        <dd>{event.showTime}</dd>
+      </dl>
+      <p class="mt-3 text-sm font-semibold text-seagles-navy">We'll be starting at {event.showStart} sharp.</p>
+    </div>
+  </Section>
+
+  <Section class="pt-0 md:pt-0">
+    <h2 class="text-2xl font-bold mb-4">On the night</h2>
+    <div class="max-w-xl space-y-3 text-seagles-cream/80">
+      <p>We're expecting over 200 guests, so please give yourself plenty of time to arrive.</p>
+      <p>As you come in, someone will check your party off the guest list.</p>
+      <p>Seating is a mix of theatre-style rows right in front of the band, with tables around the outside.</p>
+      <p>The Drouthy is open until 1am, so do stick around after the show. We'd love to catch up with you all.</p>
+    </div>
+  </Section>
+
+  <Section class="pt-0 md:pt-0">
+    <h2 class="text-2xl font-bold mb-4">Donations</h2>
+    <div class="max-w-xl space-y-3 text-seagles-cream/80">
+      <p>As this is our first gig, we're treating it as a trial run and a chance to get our name out there. We do still have sound and lighting costs to cover, though, so there'll be a donation box at the door.</p>
+      <p><span class="font-semibold text-seagles-cream">We suggest £5 each.</span> Anything left over will go towards future band costs.</p>
+      <p>And to everyone who's already donated: thank you!</p>
+      <p>The best way to show your support, though, is to{" "}<a href={facebookUrl} target="_blank" rel="noopener noreferrer" class="font-semibold text-seagles-cream underline hover:text-seagles-orange transition-colors">follow us on Facebook</a>{" "}and{" "}<a href={youtubeSubscribeUrl} target="_blank" rel="noopener noreferrer" class="font-semibold text-seagles-cream underline hover:text-seagles-orange transition-colors">subscribe to our YouTube channel</a>. It really helps us reach more people whenever we have news to share.</p>
+    </div>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <a
+        href={facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 border-2 border-seagles-cream font-semibold px-6 py-3 rounded hover:bg-seagles-navy hover:text-seagles-cream transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-7 h-7" aria-hidden="true">
+          <path fill="#1877F2" d="M36 18c0-9.94-8.06-18-18-18S0 8.06 0 18c0 8.98 6.58 16.41 15.19 17.76V23.13h-4.57V18h4.57v-3.97c0-4.51 2.69-7.01 6.8-7.01 1.97 0 4.03.35 4.03.35v4.43h-2.27c-2.24 0-2.94 1.39-2.94 2.82V18h5l-.8 5.13h-4.2v12.63C29.42 34.41 36 26.98 36 18" />
+          <path fill="#fff" d="M25 23.13 25.8 18h-5v-3.38c0-1.43.7-2.82 2.94-2.82h2.27V7.37s-2.06-.35-4.03-.35c-4.11 0-6.8 2.5-6.8 7.01V18h-4.57v5.13h4.57v12.63a18.15 18.15 0 0 0 5.62 0V23.13Z" />
+        </svg>
+        Follow us on Facebook
+      </a>
+      <a
+        href={youtubeSubscribeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 border-2 border-seagles-cream font-semibold px-6 py-3 rounded hover:bg-seagles-navy hover:text-seagles-cream transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" class="w-7 h-7" aria-hidden="true">
+          <path fill="#FF0000" d="M27.4 3.1A3.5 3.5 0 0 0 24.9.6C22.8 0 14 0 14 0S5.2 0 3.1.6A3.5 3.5 0 0 0 .6 3.1C0 5.2 0 10 0 10s0 4.8.6 6.9a3.5 3.5 0 0 0 2.5 2.5C5.2 20 14 20 14 20s8.8 0 10.9-.6a3.5 3.5 0 0 0 2.5-2.5C28 14.8 28 10 28 10s0-4.8-.6-6.9Z" />
+          <path fill="#fff" d="M11.2 14.3 18.5 10l-7.3-4.3v8.6Z" />
+        </svg>
+        Subscribe on YouTube
+      </a>
+    </div>
+  </Section>
+
+  <Section class="pt-0 md:pt-0">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-bold mb-4">Finding the side entrance</h2>
+      <p class="text-seagles-cream/80 mb-4">
+        The way in to the {event.room} is through the side door on {event.entranceStreet}, right next to Town &amp; Country.
+      </p>
+      <div class="aspect-[4/3] rounded-lg overflow-hidden border border-seagles-cream/20">
+        <iframe
+          class="w-full h-full"
+          src={mapEmbedUrl}
+          title={`Street View of the side entrance to ${event.venue}, ${event.location}`}
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <a
+        href={mapUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block mt-4 bg-seagles-orange text-white font-semibold px-4 py-2 rounded hover:opacity-90 transition-opacity"
+      >
+        Open in Google Maps
+      </a>
+    </div>
+  </Section>
+
+  <Section class="pt-0 md:pt-0">
+    <h2 class="text-2xl font-bold mb-4">Parking</h2>
+    <p class="max-w-xl text-seagles-cream/80">
+      Street parking is free after 6pm. If you're struggling for a space, the{" "}<a href={overflowParkingUrl} target="_blank" rel="noopener noreferrer" class="font-semibold text-seagles-cream underline hover:text-seagles-orange transition-colors">Inverurie Academy Community Campus</a>{" "}is close by.
+    </p>
+  </Section>
+</BaseLayout>
