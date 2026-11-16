@@ -3,6 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
+import GalleryItem from "../components/GalleryItem.astro";
+import Lightbox from "../components/Lightbox.astro";
+import { heroPhoto, featuredPhotos, photoCredit, photoCreditUrl, photoEvent } from "../data/photos";
 
 // Temporarily hidden pre-launch — Gigs page excluded from build, see CLAUDE.md
 // import GigCard from "../components/GigCard.astro";
@@ -27,6 +30,22 @@ import logo from "../assets/logo.png";
       {/* <a href="/gigs" class="bg-seagles-orange text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">See Gigs</a> */}
       <a href="/contact" class="border-2 border-seagles-cream font-semibold px-6 py-3 rounded hover:bg-seagles-navy hover:text-seagles-cream transition-colors">Book the Band</a>
     </div>
+
+    <figure class="mt-10">
+      <div class="relative rounded-lg overflow-hidden shadow-2xl">
+        <Image
+          src={heroPhoto.src}
+          alt={heroPhoto.alt}
+          widths={[640, 1024, 1600, 2048]}
+          sizes="(min-width: 1024px) 992px, calc(100vw - 2rem)"
+          loading="eager"
+          fetchpriority="high"
+          class="w-full aspect-[16/9] object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-seagles-black/50 to-transparent pointer-events-none"></div>
+      </div>
+      <figcaption class="mt-2 text-xs text-seagles-cream/60">Photo: <a href={photoCreditUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-seagles-orange transition-colors">{photoCredit}</a> — {photoEvent}</figcaption>
+    </figure>
 
     <div class="mt-10 max-w-2xl mx-auto aspect-video">
       <iframe
@@ -66,14 +85,19 @@ import logo from "../assets/logo.png";
   </Section>
   */}
 
-  {/* Temporarily hidden pre-launch — Gallery and Music pages excluded from build, see CLAUDE.md
   <Section>
-    <h2 class="text-2xl font-bold mb-4">Hear us / See us</h2>
+    <h2 class="text-2xl font-bold mb-4">See us live</h2>
     <p class="text-seagles-cream/80 mb-4">Get a feel for the live show before you book or buy a ticket.</p>
+    <div class="grid grid-cols-3 gap-2 md:gap-4 mb-4">
+      {featuredPhotos.map((photo) => (
+        <GalleryItem src={photo.src} alt={photo.alt} position={photo.position} />
+      ))}
+    </div>
     <div class="flex flex-wrap gap-4">
       <a href="/gallery" class="font-semibold hover:text-seagles-orange transition-colors">Gallery &rarr;</a>
-      <a href="/music" class="font-semibold hover:text-seagles-orange transition-colors">Music &rarr;</a>
+      {/* Temporarily hidden pre-launch — Music page excluded from build, see CLAUDE.md */}
+      {/* <a href="/music" class="font-semibold hover:text-seagles-orange transition-colors">Music &rarr;</a> */}
     </div>
   </Section>
-  */}
+  <Lightbox />
 </BaseLayout>

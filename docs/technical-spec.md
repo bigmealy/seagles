@@ -19,7 +19,7 @@ src/
   layouts/        # Shared page layout(s)
   pages/          # index.astro, about.astro, gigs.astro, gallery.astro, music.astro, contact.astro
 public/
-  images/         # Logo, photos (as supplied)
+  images/         # OG image and other static images
 ```
 
 ## Responsive Design Approach
@@ -33,7 +33,7 @@ public/
 No CMS or backend database. Content lives in the repo as structured data:
 
 - **Gigs**: an Astro content collection (e.g. `src/content/gigs/*.md` or a single `gigs.json`) with fields for date, venue, location, and optional ticket URL. Adding a gig means adding one entry.
-- **Gallery/photos**: static files in `public/images/`, referenced from the gallery page.
+- **Gallery/photos**: web-sized JPEGs in `src/assets/photos/` (imported from the originals by `scripts/import-photos.mjs`), listed in `src/data/photos.ts`, and rendered via Astro's `<Image>` so responsive WebP variants are generated at build time.
 - **Bio/copy**: plain text/markdown in the relevant `.astro` page or a content collection entry.
 
 This keeps updates to a `git commit` + redeploy, matching the "developer edits directly, no CMS" decision in the product spec.

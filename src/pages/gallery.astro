@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import GalleryItem from "../components/GalleryItem.astro";
+import Lightbox from "../components/Lightbox.astro";
+import { galleryPhotos, photoCredit, photoCreditUrl, photoEvent } from "../data/photos";
+---
+
+<BaseLayout
+  title="Gallery"
+  description="Live photos of Seagles, an Eagles tribute band from North-East Scotland, on stage at the Drouthy Cobbler. See the band in action before you book."
+>
+  <Section>
+    <h1 class="text-3xl font-bold mb-6">Gallery</h1>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {galleryPhotos.map((photo) => (
+        <GalleryItem src={photo.src} alt={photo.alt} position={photo.position} />
+      ))}
+    </div>
+    <p class="mt-6 text-sm text-seagles-cream/60">Photos: <a href={photoCreditUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-seagles-orange transition-colors">{photoCredit}</a> — {photoEvent}</p>
+  </Section>
+  <Lightbox />
+</BaseLayout>

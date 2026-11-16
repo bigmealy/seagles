@@ -1,14 +1,31 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image, getImage } from "astro:assets";
+
 interface Props {
-  src?: string;
+  src?: ImageMetadata;
   alt?: string;
+  position?: string;
 }
 
-const { src, alt } = Astro.props;
+const { src, alt, position } = Astro.props;
+
+// Full-size optimized version, shown in the Lightbox when a tile is clicked
+const full = src ? await getImage({ src, width: 2400, format: "webp" }) : undefined;
 ---
 
-{src ? (
-  <img src={src} alt={alt ?? ""} class="w-full aspect-square object-cover rounded-lg" />
+{src && full ? (
+  <a href={full.src} data-lightbox class="block rounded-lg overflow-hidden focus-visible:outline-2 focus-visible:outline-seagles-orange">
+    <Image
+      src={src}
+      alt={alt ?? ""}
+      widths={[400, 800]}
+      sizes="(min-width: 768px) 33vw, 50vw"
+      loading="lazy"
+      style={position ? `object-position: ${position}` : undefined}
+      class="w-full aspect-square object-cover hover:scale-105 transition-transform duration-300"
+    />
+  </a>
 ) : (
   <div class="w-full aspect-square rounded-lg border-2 border-dashed border-seagles-cream/30 bg-seagles-cream/10 flex items-center justify-center text-center p-4">
     <span class="text-sm text-seagles-cream/60">Photo placeholder — awaiting band photos</span>
