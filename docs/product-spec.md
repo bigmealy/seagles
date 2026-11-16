@@ -44,7 +44,7 @@ A form or clear contact method (email/phone) aimed primarily at venues and promo
 | Asset | Status |
 |---|---|
 | Logo | Ready |
-| Band photos | Supplied — live set from the Drouthy Cobbler, Nov 2026 by Craig Chisholm Music Photography, credited on-site (unedited originals; edited versions may follow) |
+| Band photos | Supplied — live set from the Drouthy Laird, Inverurie, Nov 2026 by Craig Chisholm Music Photography, credited on-site (unedited originals; edited versions may follow) |
 | Bio copy | TBD — needs to be written; must include an explicit non-affiliation sentence near the top (see Non-Functional Requirements → Legal) |
 | Color scheme / visual branding | TBD — not yet decided |
 | Gig date data | TBD — ongoing, updated as shows are booked |

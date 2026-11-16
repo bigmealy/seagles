@@ -10,7 +10,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { root } from "./lib/logo-mark.mjs";
 
-// Frame numbers from "Seagles - Drouthy Cobbler - 6-11-26 - UNEDITED (<n>).JPG"
+// Frame numbers from "Seagles - Drouthy Cobbler - 6-11-26 - UNEDITED (<n>).JPG".
+// The source files name the wrong venue: the gig was at the Drouthy Laird, Inverurie.
 const CHOSEN = [2, 72, 131, 158, 221, 237, 243, 246, 259, 290, 316, 363, 395, 422, 429];
 const LONG_EDGE = 2400;
 
@@ -25,7 +26,7 @@ fs.mkdirSync(outDir, { recursive: true });
 
 for (const n of CHOSEN) {
   const src = path.join(srcDir, `Seagles - Drouthy Cobbler - 6-11-26 - UNEDITED (${n}).JPG`);
-  const out = path.join(outDir, `drouthy-cobbler-2026-11-06-${n}.jpg`);
+  const out = path.join(outDir, `drouthy-laird-2026-11-06-${n}.jpg`);
   await sharp(src)
     .rotate()
     .resize(LONG_EDGE, LONG_EDGE, { fit: "inside", withoutEnlargement: true })

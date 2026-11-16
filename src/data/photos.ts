@@ -1,20 +1,20 @@
 import type { ImageMetadata } from "astro";
 
-import p2 from "../assets/photos/drouthy-cobbler-2026-11-06-2.jpg";
-import p72 from "../assets/photos/drouthy-cobbler-2026-11-06-72.jpg";
-import p131 from "../assets/photos/drouthy-cobbler-2026-11-06-131.jpg";
-import p158 from "../assets/photos/drouthy-cobbler-2026-11-06-158.jpg";
-import p221 from "../assets/photos/drouthy-cobbler-2026-11-06-221.jpg";
-import p237 from "../assets/photos/drouthy-cobbler-2026-11-06-237.jpg";
-import p243 from "../assets/photos/drouthy-cobbler-2026-11-06-243.jpg";
-import p246 from "../assets/photos/drouthy-cobbler-2026-11-06-246.jpg";
-import p259 from "../assets/photos/drouthy-cobbler-2026-11-06-259.jpg";
-import p290 from "../assets/photos/drouthy-cobbler-2026-11-06-290.jpg";
-import p316 from "../assets/photos/drouthy-cobbler-2026-11-06-316.jpg";
-import p363 from "../assets/photos/drouthy-cobbler-2026-11-06-363.jpg";
-import p395 from "../assets/photos/drouthy-cobbler-2026-11-06-395.jpg";
-import p422 from "../assets/photos/drouthy-cobbler-2026-11-06-422.jpg";
-import p429 from "../assets/photos/drouthy-cobbler-2026-11-06-429.jpg";
+import p2 from "../assets/photos/drouthy-laird-2026-11-06-2.jpg";
+import p72 from "../assets/photos/drouthy-laird-2026-11-06-72.jpg";
+import p131 from "../assets/photos/drouthy-laird-2026-11-06-131.jpg";
+import p158 from "../assets/photos/drouthy-laird-2026-11-06-158.jpg";
+import p221 from "../assets/photos/drouthy-laird-2026-11-06-221.jpg";
+import p237 from "../assets/photos/drouthy-laird-2026-11-06-237.jpg";
+import p243 from "../assets/photos/drouthy-laird-2026-11-06-243.jpg";
+import p246 from "../assets/photos/drouthy-laird-2026-11-06-246.jpg";
+import p259 from "../assets/photos/drouthy-laird-2026-11-06-259.jpg";
+import p290 from "../assets/photos/drouthy-laird-2026-11-06-290.jpg";
+import p316 from "../assets/photos/drouthy-laird-2026-11-06-316.jpg";
+import p363 from "../assets/photos/drouthy-laird-2026-11-06-363.jpg";
+import p395 from "../assets/photos/drouthy-laird-2026-11-06-395.jpg";
+import p422 from "../assets/photos/drouthy-laird-2026-11-06-422.jpg";
+import p429 from "../assets/photos/drouthy-laird-2026-11-06-429.jpg";
 
 export interface Photo {
   src: ImageMetadata;
@@ -25,7 +25,7 @@ export interface Photo {
 
 export const photoCredit = "Craig Chisholm Music Photography";
 export const photoCreditUrl = "https://craigchisholmmusicphotography.tumblr.com/";
-export const photoEvent = "Drouthy Cobbler, November 2026";
+export const photoEvent = "Drouthy Laird, Inverurie, November 2026";
 
 // Homepage hero — full line-up on stage
 export const heroPhoto: Photo = {
